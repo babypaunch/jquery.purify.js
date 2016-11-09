@@ -12,19 +12,15 @@
 * 입력되어 있는 문자열의 중간에 새로운 입력을 하고 싶으면 keydown event를 제거하면 되나 권장하지 않음.
 
 ### $(element).purify(flag, specials) ###
+1. 공백은 항상 입력할 수 있게되어 있다.
+2. Parameter 1이 없을 경우 default 값으로 "neEk" 값이 대입된다. 즉, 숫자/대문자/소문자/한글을 입력할 수 있다.
+3. Parameter 2가 없을 경우 default 값으로 "[]" 값이 대입된다. 즉 빈 배열이 대입되어서 특수문자를 입력할 수 없다.
+4. 아래의 Parameter를 조합해서 사용할 수 있다.
+
 <table>
 	<tr>
 		<th>Parameter</th>
 		<th>Comment</th>
-	</tr>
-	<tr>
-		<td>공통적용</td>
-		<td>
-			<div>1. 공백은 항상 입력할 수 있게되어 있다.</div>
-			<div>2. Parameter 1이 없을 경우 default 값으로 "neEk" 값이 대입된다. 즉, 숫자/대문자/소문자/한글을 입력할 수 있다.</div>
-			<div>3. Parameter 2가 없을 경우 default 값으로 "[]" 값이 대입된다. 즉 빈 배열이 대입되어서 특수문자를 입력할 수 없다.</div>
-			<div>3. 아래의 Parameter를 조합해서 사용할 수 있다.</div>
-		</td>
 	</tr>
 	<tr>
 		<td>flag</td>
