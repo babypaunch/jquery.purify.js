@@ -5,12 +5,13 @@
 ## Install js file ##
 * jquery에 종속적인 내용만 다루므로 반드시 jquery 파일의 아래에 jquery.purify.js 파일을 위치시켜야 함.
 
-## Usage ##
+## Comments & Usage ##
 * plugin이므로 각 element에 적용해주어야 함.
 * jquery.validate.js와 다르게, keydown, keyup시 해당 element의 value에 지정하지 않은 문자열을 모두 제거함.
 * 기본적인 masking 기능으로 입력되어 있는 문자열 중간에 새로운 입력을 할 수 없음. 뒤에서부터 지우고 다시 입력 필요함.
 * 입력되어 있는 문자열의 중간에 새로운 입력을 하고 싶으면 keydown event를 제거하면 되나 권장하지 않음.
 
+### $(element).purify(flag, specials) ###
 <table>
 	<tr>
 		<th>Parameter</th>
