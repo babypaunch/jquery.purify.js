@@ -7,8 +7,9 @@
 
 ## Usage ##
 * plugin이므로 각 element에 적용해주어야 함.
-* jquery.validate.js와 다르게, onkeyup시 해당 element의 value에 지정하지 않은 문자열을 모두 제거함.
-* onkeyup시 동작되므로 타이핑되는 문자열이 보일 수 있음. 이는 한글처리를 정확히 하기위해서 onkeyup event를 이용해야만 하므로 어쩔 수 없음.
+* jquery.validate.js와 다르게, keydown, keyup시 해당 element의 value에 지정하지 않은 문자열을 모두 제거함.
+* 기본적인 masking 기능으로 입력되어 있는 문자열 중간에 새로운 입력을 할 수 없음. 뒤에서부터 지우고 다시 입력 필요함.
+* 입력되어 있는 문자열의 중간에 새로운 입력을 하고 싶으면 keydown event를 제거하면 되나 권장하지 않음.
 
 <table>
 	<tr>
@@ -19,33 +20,41 @@
 		<td>공통적용</td>
 		<td>
 			1. 공백은 항상 입력할 수 있게되어 있다.
-			2. Parameter가 없을 경우 default 값으로 "neEk" 값이 대입된다. 즉, 숫자/대문자/소문자/한글을 입력할 수 있다.
+			2. Parameter 1이 없을 경우 default 값으로 "neEk" 값이 대입된다. 즉, 숫자/대문자/소문자/한글을 입력할 수 있다.
+			3. Parameter 2가 없을 경우 default 값으로 "[]" 값이 대입된다. 즉 빈 배열이 대입되어서 특수문자를 입력할 수 없다.
 			3. 아래의 Parameter를 조합해서 사용할 수 있다.
 		</td>
 	</tr>
 	<tr>
-		<td>n</td>
-		<td>숫자만 입력할 수 있다.</td>
+		<td>flag</td>
+		<td>
+			* n: 숫자만 입력 가능
+			* e: 소문자만 입력 가능
+			* E: 대문자만 입력 가능
+			* k: 한글만 입력 가능
+		</td>
 	</tr>
 	<tr>
-		<td>e</td>
-		<td>소문자만 입력할 수 있다.</td>
-	</tr>
-	<tr>
-		<td>E</td>
-		<td>대문자만 입력할 수 있다.</td>
-	</tr>
-	<tr>
-		<td>k</td>
-		<td>한글만 입력할 수 있다.</td>
-	</tr>
-	<tr>
-		<td>s</td>
-		<td>키보드에 존재하는 모든 특수문자를 입력할 수 있다.</td>
+		<td>specials</td>
+		<td>
+			* 입력하고 싶은 특수문자를 문자열로 배열에 대입한다.
+		</td>
 	</tr>
 </table>
 
 <pre>
-//Sample
-$("input").purify("eE"); //소문자/대문자만 입력할 수 있다.
+/*
+* Sample
+*/
+$("#no").purify("n"); //숫자만 입력 가능
+
+$("#en").purify("e"); //소문자만 입력 가능
+
+$("#EN").purify("E"); //대문자만 입력 가능
+
+$("#ko").purify("k"); //한글만 입력 가능
+
+$("#email").purify("neE", ["@", ".", "_"]); //숫자 + 소문자 + 대문자 + 특수문자(@._) 입력 가능
+
+$("#ip").purify("n", ["."]); //숫자 + 특수문자(.) 입력 가능
 </pre>
